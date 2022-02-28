@@ -1,0 +1,48 @@
+1. CREATE DATABASE `myshop`
+
+2. create table users (
+id int not null auto_increment primary key,
+name varchar(255),
+email varchar(255),
+password varchar(255)
+);
+
+create table categories (
+id int not null auto_increment primary key,
+name varchar(255)
+);
+
+create table items (
+id int not null auto_increment primary key,
+name varchar(255),
+description varchar(255),
+price int,
+stock int,
+category_id int  (foreign key references id on categories)
+);
+
+3. Users:
+   INSERT INTO  users VALUES (null, 'John Doe', 'john@doe.com', 'john123');
+   INSERT INTO  users VALUES (null, 'Jane Doe', 'jane@doe.com', 'jenita123');
+   
+   categories:
+   INSERT INTO categories  VALUES (null, 'gadget');
+   INSERT INTO categories  VALUES (null, 'cloth');
+   INSERT INTO categories  VALUES (null, 'men');
+   INSERT INTO categories  VALUES (null, 'women');
+   INSERT INTO categories  VALUES (null, 'branded');
+
+   items:
+   INSERT INTO items VALUES (null, 'sumsang b50', 'hape keren merek sumsang', '4000000', '100', '1');
+   INSERT INTO items VALUES (null, 'uniklooh', 'baju keren dari brand ternama', '500000', '50', '2');
+   INSERT INTO items VALUES (null, 'IHMO Watch', 'jam anak yang jujur banget', '2000000', '10', '1');
+
+4.a. users
+	SELECT id, name, username, email FROM users
+  b. items
+     SELECT * FROM items WHERE harga > 1000000
+     SELECT * FROM items WHERE name = uniqlo
+  c. SELECT * FROM items JOIN categories ON items.category_id = categories.id
+
+5. UPDATE items SET price = 2500000 WHERE name = "sumsang b50"
+   
